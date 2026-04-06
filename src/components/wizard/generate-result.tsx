@@ -113,17 +113,17 @@ export function GenerateResult({
         className="w-full max-w-lg rounded-2xl shadow-xl"
       />
 
-      <div className="mt-6 flex gap-3">
+      <div className="mt-6 flex w-full max-w-lg flex-col gap-3">
         <button
           onClick={handleDownload}
-          className="flex items-center gap-2 rounded-xl bg-[var(--gold)] px-6 py-3 font-semibold text-white hover:bg-[var(--gold)]/90"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--gold)] px-6 py-3 font-semibold text-white hover:bg-[var(--gold)]/90"
         >
           <Download className="h-4 w-4" />
           Download billede
         </button>
         <button
           onClick={onReset}
-          className="flex items-center gap-2 rounded-xl border-2 border-[var(--warm-brown)]/15 px-6 py-3 font-semibold text-[var(--warm-brown)] hover:bg-[var(--warm-brown)]/5"
+          className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[var(--warm-brown)]/15 px-6 py-3 font-semibold text-[var(--warm-brown)] hover:bg-[var(--warm-brown)]/5"
         >
           <RotateCcw className="h-4 w-4" />
           Byg en ny kage
