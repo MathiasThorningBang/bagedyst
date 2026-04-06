@@ -158,7 +158,7 @@ export default function Home() {
     <div className="mx-auto flex min-h-dvh w-full max-w-xl flex-col px-5 py-6">
       <ProgressBar currentStep={step} onStepClick={setStep} />
 
-      <div className="mt-8 flex-1">
+      <div className="mt-8 flex-1 pb-24">
         <AnimatePresence mode="wait">
           <motion.div
             key={step}
@@ -219,26 +219,31 @@ export default function Home() {
         </AnimatePresence>
       </div>
 
-      {/* Navigation */}
-      {step !== "overblik" && (
-        <div className="mt-6 flex items-center justify-between pb-4">
-          <button
-            onClick={goBack}
-            disabled={currentStepIndex === 0}
-            className="flex items-center gap-1 rounded-xl px-4 py-3 text-base font-medium text-[var(--warm-brown)]/60 transition-colors hover:text-[var(--warm-brown)] disabled:invisible"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Tilbage
-          </button>
-          <button
-            onClick={goNext}
-            disabled={!canAdvance()}
-            className="flex items-center gap-1 rounded-xl bg-[var(--gold)] px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[var(--gold)]/90 disabled:opacity-30"
-          >
-            Næste
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
+      {/* Sticky bottom navigation bar */}
+      {step !== "overblik" && canAdvance() && (
+        <motion.div
+          initial={{ y: 80 }}
+          animate={{ y: 0 }}
+          className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--warm-brown)]/5 bg-[var(--cream)]/95 backdrop-blur-sm"
+        >
+          <div className="mx-auto flex max-w-xl items-center justify-between px-5 py-4">
+            <button
+              onClick={goBack}
+              disabled={currentStepIndex === 0}
+              className="flex items-center gap-1 rounded-xl px-4 py-3 text-base font-medium text-[var(--warm-brown)]/60 transition-colors hover:text-[var(--warm-brown)] disabled:invisible"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Tilbage
+            </button>
+            <button
+              onClick={goNext}
+              className="flex items-center gap-1 rounded-xl bg-[var(--gold)] px-6 py-3 text-base font-semibold text-white transition-colors hover:bg-[var(--gold)]/90"
+            >
+              Næste
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
+        </motion.div>
       )}
     </div>
   );
